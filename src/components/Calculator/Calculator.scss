@@ -1,0 +1,38 @@
+.calculator-inner{
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  input{
+    width: 365px;
+    padding: 15px;
+    font-size: 20px;
+    font-family: Arial, SansSerif;
+    text-align: right;
+  }
+}
+
+.calculator-btns{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  padding: 15px;
+  button{
+    width: 88px;
+    padding: 10px;
+    font-size: 20px;
+  }
+}
+
+.clear{
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  margin: 0 15px;
+}
