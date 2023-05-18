@@ -5,3 +5,47 @@
 .hide{
   display: none;
 }
+
+.task-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+
+  svg{
+    margin-top: 5px;
+    cursor: pointer;
+  }
+
+  input{
+    width: 300px;
+    height: 25px;
+    border: none;
+    outline: none;
+    border-bottom: 1px #282c34 dashed;
+    padding-bottom: 6px;
+    cursor: pointer;
+
+    &:focus{
+      text-decoration: none;
+    }
+  }
+}
+
+.task-item:hover{
+  .delete{
+    right: 5px;
+  }
+}
+
+.delete{
+  position: absolute;
+  right: -100%;
+  transition: 0.5s;
+}
+
+.strike{
+  text-decoration: line-through;
+}

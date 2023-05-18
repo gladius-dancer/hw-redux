@@ -1,8 +1,8 @@
 import { applyMiddleware, createStore, combineReducers, Reducer } from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import {calculatorReducer, CalculatorStateType} from "./redusers/calculatorReducer";
-import {toDoReducer, ToDoStateType} from "./redusers/toDoReducer"
+import {calculatorReducer, CalculatorStateType} from "./reducers/calculatorReducer";
+import {toDoReducer, ToDoStateType} from "./reducers/toDoReducer"
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 type RootReducerType = {

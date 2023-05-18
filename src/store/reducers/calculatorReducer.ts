@@ -1,7 +1,7 @@
 import {Nullable} from "../../type/NullableType";
 
 export type CalculatorStateType = {
-    inputValue: Nullable<string>,
+    inputValue: string,
     currentAction: Nullable<string>
 }
 
@@ -22,7 +22,7 @@ export const calculatorReducer = (state = initialState, action: any): Calculator
             return {...state, inputValue: state.inputValue + action.payload};
         case SET_CURRENT_ACTION:
             return {
-                inputValue: state.currentAction !=="" ? state.inputValue?.slice(0, state.inputValue.length - 1) + action.payload: state.inputValue + action.payload,
+                inputValue: state.currentAction !== "" ? state.inputValue?.slice(0, state.inputValue.length - 1) + action.payload : state.inputValue + action.payload,
                 currentAction: action.payload
             };
         case CALCULATE:

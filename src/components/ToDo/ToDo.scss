@@ -3,6 +3,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding-top: 50px;
 }
@@ -15,3 +16,12 @@
   align-items: center;
 }
 
+.todo-tasks{
+  list-style: none;
+  padding: 0;
+}
+
+.done-tasks{
+  list-style: none;
+  padding: 0;
+}

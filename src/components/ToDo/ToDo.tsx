@@ -1,27 +1,13 @@
 import React from 'react';
-import { v4 as uuid } from 'uuid';
 import {Button} from "@mui/material";
 import ToDoItem from "../ToDoItem/ToDoItem";
-import {useAppDispatch, useAppSelector} from "../../store/store";
-import {addTask, ToDoStateType} from "../../store/redusers/toDoReducer";
 import "./ToDo.scss";
+import useToDo from "./hooks/useToDo";
+import {useAppSelector} from "../../store/store";
 
-function ToDo() {
-    const dispatch = useAppDispatch();
+export default function ToDo() {
     const tasks = useAppSelector(state => state.todo);
-
-
-    const handleAdd = ()=>{
-        dispatch(addTask({id: uuid(), task: "", status: false}))
-    }
-
-    const handleEdit = ()=>{
-
-    }
-
-    const handleDelete = ()=>{
-
-    }
+    const {handleEdit, handleDone, handleToDo, handleDelete, handleAdd, handleClear} = useToDo()
 
     return (
         <div className="container">
@@ -29,25 +15,41 @@ function ToDo() {
                 <div className="todo-inner">
                     <div className="todo-inner-header">
                         <h3>Tasks</h3>
-                        <Button variant="text" onClick={()=>handleAdd()}>New task</Button>
+                        <Button variant="text" onClick={() => handleAdd()}>New task</Button>
                     </div>
                     <ul className="todo-tasks">
-                        {tasks.filter((item)=>item.status === false).map((item: ToDoStateType)=>(
+                        {tasks.filter((item) => item.status === false).map((item) => (
                             <ToDoItem
+                                key={item.id}
+                                id={item.id}
                                 status={item.status}
                                 task={item.task}
-                                addTask={handleEdit}
-                                deleteTask={handleDelete}
+                                deleteTask={() => handleDelete(item.id)}
+                                edit={handleEdit}
+                                done={() => handleDone(item.id)}
+                                todo={() => handleToDo(item.id)}
                             />
                         ))}
                     </ul>
+                    {tasks.filter((item) => item.status === true).length > 0 &&
+                        (
+                            <div className="todo-inner-header">
+                                <h3>Done</h3>
+                                <Button variant="text" onClick={() => handleClear()}>Clear</Button>
+                            </div>
+                        )}
+
                     <ul className="done-tasks">
-                        {tasks.filter((item)=>item.status === true).map((item: ToDoStateType)=>(
+                        {tasks.filter((item) => item.status === true).map((item) => (
                             <ToDoItem
+                                key={item.id}
+                                id={item.id}
                                 status={item.status}
                                 task={item.task}
-                                addTask={handleEdit}
-                                deleteTask={handleDelete}
+                                deleteTask={() => handleDelete(item.id)}
+                                edit={handleEdit}
+                                done={() => handleDone(item.id)}
+                                todo={() => handleToDo(item.id)}
                             />
                         ))}
                     </ul>
@@ -56,5 +58,3 @@ function ToDo() {
         </div>
     );
 }
-
-export default ToDo;
