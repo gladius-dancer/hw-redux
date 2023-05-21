@@ -16,7 +16,7 @@ const CLEAR_DONE = "CLEAR_DONE";
 export const toDoReducer = (state = initialState, action: any): ToDoStateType[] => {
     switch (action.type) {
         case ADD_TASK:
-            return [...state, {id: action.payload.id, task: action.payload.text, status: action.payload.status}];
+            return [...state, {id: action.payload.id, task: action.payload.task, status: action.payload.status}];
         case EDIT_TASK:
             return [...state.map(item => {
                 if (item.id == action.payload.id) return {...item, task: action.payload.value};

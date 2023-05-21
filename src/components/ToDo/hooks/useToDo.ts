@@ -4,6 +4,7 @@ import {v4 as uuid} from "uuid";
 
 export default function UseToDo() {
     const dispatch = useAppDispatch();
+    const tasks = useAppSelector(state => state.todo);
 
     const handleAdd = ()=>{
         dispatch(addTask({id: uuid(), task: "", status: false}))
@@ -14,7 +15,15 @@ export default function UseToDo() {
     }
 
     const handleDone = (id: string)=>{
-        dispatch(doneTask(id));
+        tasks.map((item)=>{
+            if(item.id === id){
+                console.log(item)
+                if(item.task.length > 0){
+                    dispatch(doneTask(id));
+                }
+            }
+        });
+
     }
 
     const handleToDo = (id: string)=>{
